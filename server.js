@@ -8,6 +8,9 @@ var cheerio = require("cheerio");
 // Initialize Express
 var app = express();
 
+// Set up a static folder (public) for our web app
+app.use(express.static("public"));
+
 // Database configuration
 var databaseUrl = "scraper";
 var collections = ["scrapedData"];
@@ -20,7 +23,7 @@ db.on("error", function(error) {
 
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
-  res.send("Hello world");
+  res.send("Hello World");
 });
 
 // Retrieve data from the db
