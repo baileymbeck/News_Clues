@@ -1,0 +1,10 @@
+body{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.jumbotron {
+    background-image: url("../images/dog.jpg");
+    opacity: 50%;
+    height: 500px;
+    color: antiquewhite;
+}
