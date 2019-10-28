@@ -5,23 +5,23 @@ function displayResults(news) {
     // Then, for each entry of that json...
     news.forEach(function (article) {
         // Append each of the news properties to the table
+        var link = $("<a></a>").text(article.link)
+        link.attr("href", article.link)
         var tr = $("<tr>").append(
             $("<td>").text(article.title),
-            $("<td>").text(article.link),
-            $("<td>").text(article.button)
+            $("<td>").append(link),
+            $("<button>Save</button>").addClass("save-article btn btn-primary btn-sm").attr("data-id",article._id)
         );
-        // function createButton(){
-        //     var $input = $('<input type="button" value="new button" />');
-        //     $input.appendTo($("body"));
-        // }
-        // createButton();
+        
         $("tbody").append(tr);
     });
 }
 
 // Move to saved
 function setSave(selector) {
-    // changed button to saved, send to saved page
+    // changed button to saved, send to saved page - update favorite for true
+    // Favorite/saved articles true/false
+    
     
 }
 // 1: On Load
@@ -37,9 +37,9 @@ $.getJSON("/all", function (data) {
 // ======================
 
 // When user clicks the save button, changed button name to saved & populate on saved page
-$("#save-article").on("click", function () {
+$(".save-article").on("click", function () {
     // 
-    setSave("#save-article");
+    setSave(".save-article");
 
     // Do an api call to the back end for json with all animals sorted by weight
     $.getJSON("/saved", function (data) {

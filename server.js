@@ -41,6 +41,7 @@ app.get("/all", function (req, res) {
   });
 });
 
+
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function (req, res) {
   // Make a request via axios for the news section of `ycombinator`
@@ -58,7 +59,8 @@ app.get("/scrape", function (req, res) {
         // Insert the data in the scrapedData db
         db.scrapedData.insert({
           title: title,
-          link: link
+          link: link,
+          favorite: false
         },
           function (err, inserted) {
             if (err) {
