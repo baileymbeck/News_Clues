@@ -7,9 +7,14 @@ function displayResults(news) {
         // Append each of the news properties to the table
         var tr = $("<tr>").append(
             $("<td>").text(article.title),
-            $("<td>").text(article.link)
+            $("<td>").text(article.link),
+            $("<td>").text(article.button)
         );
-
+        // function createButton(){
+        //     var $input = $('<input type="button" value="new button" />');
+        //     $input.appendTo($("body"));
+        // }
+        // createButton();
         $("tbody").append(tr);
     });
 }
