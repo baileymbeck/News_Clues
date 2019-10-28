@@ -7,11 +7,17 @@ function displayResults(news) {
         // Append each of the news properties to the table
         var tr = $("<tr>").append(
             $("<td>").text(article.title),
-            $("<td>").text(article.body)
+            $("<td>").text(article.link)
         );
 
         $("tbody").append(tr);
     });
+}
+
+// Move to saved
+function setSave(selector) {
+    // changed button to saved, send to saved page
+    
 }
 // 1: On Load
 // ==========
@@ -21,12 +27,6 @@ $.getJSON("/all", function (data) {
     // Call our function to generate a table body
     displayResults(data);
 });
-
-// Move to saved
-function setSave(selector) {
-    // changed button to saved, send to saved page
-    
-}
 
 // 2: Buttons
 // ======================
@@ -38,18 +38,6 @@ $("#save-article").on("click", function () {
 
     // Do an api call to the back end for json with all animals sorted by weight
     $.getJSON("/saved", function (data) {
-        // Call our function to generate a table body
-        displayResults(data);
-    });
-});
-
-// When user clicks the name sort button, display the table sorted by name
-$("#name-sort").on("click", function () {
-    // Set new column as currently-sorted (active)
-    setSave("#animal-name");
-
-    // Do an api call to the back end for json with all animals sorted by name
-    $.getJSON("/name", function (data) {
         // Call our function to generate a table body
         displayResults(data);
     });
